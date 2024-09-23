@@ -1,0 +1,54 @@
+{% import "_macro.html" as macro %}
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='style.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/blog/mini-blog.svg') }}">
+    {% block title %}
+    <!-- El nombre en la pestaña -->
+    {% endblock %}
+
+    {% block script %}
+    <!-- Scripts -->
+    {% endblock %}
+  </head>
+  <body>
+    <header>
+      {% block header %}
+      <!-- Titulos de la pagina -->
+      <div class="public-header">
+	<h1> Miniblog </h1>
+	<div>
+	  {{ macro.img(url_for('static', filename='img/blog/mini-blog.svg')) }}
+	</div>
+      </div>
+      {% endblock %}
+    </header>
+    <nav>
+      <!-- Mensajes de error -->
+      {% for message in get_flashed_messages() %}
+      <div>
+        {{ message }}
+      </div>
+      {% endfor %}
+    </nav>
+    <main>
+      {% block content %}
+      <!-- Contenido principal del bloque -->
+      {% endblock %}
+    </main>
+    </aside>
+    <footer>
+      <!-- Pie de página -->
+      <div>
+	<i>Miniblog</i>
+	<br>
+	&lAarr; &copy; All rights reserved &rAarr;
+	<br>
+	<small>Author: Davidshiro Pichu </small>
+      </div>
+    </footer>
+  </body>
+</html>

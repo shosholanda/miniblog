@@ -1,0 +1,94 @@
+{% extends 'blog/home.html' %}
+
+{% block content %}
+<aside>
+  <h3>Actions</h3>
+  <ul class='link'>
+    <li>
+      {{ macro.link('Create new post', url_for('profile.create'))  }}
+    </li>
+    <li>
+      {{ macro.link('Update this post', url_for('profile.update', id_post = id_post)) }}
+    </li>
+    <li>
+      {{ macro.link('Delete this post', url_for('profile.delete', id_post = id_post)) }}
+    </li>
+    <li>
+      {{ macro.link('View my public posts', url_for('home.my_posts', user = g.user, access='public')) }}
+    </li>
+    <li>
+      {{ macro.link('View my private posts', url_for('home.my_posts', user = g.user, access='private')) }}
+    </li>
+  </ul>
+</aside>
+
+<section>
+  <div class="post">
+    <h4> {{ post.title }} </h4>
+    <p>
+      {{ post.text }}
+    </p>
+    {% if post.img %}
+    <div>
+      {{ macro.img_link(url_for('home.post', id_post = post.id), url_for('static', filename = post.img), alt=post.img) }}
+    </div>
+    {% endif %}
+    <div class="metadata">
+      <div>
+	<div>
+	  {{ macro.img(url_for('static', filename='img/blog/like.svg'), alt='Like') }}
+	</div>
+	<span id="likes{{ post.id }}">
+	  {{ post.likes }}
+	</span>
+      </div>
+      <div>
+	{{ macro.img(url_for('static', filename='img/blog/comment.svg'), alt='Comment') }}
+      </div>
+      <div>
+	{{ macro.img(url_for('static', filename='img/blog/share.svg'), alt='Share') }}
+      </div>
+      <div>Posted {{ post.date }} by {{ post.author }} </div>
+    </div>
+
+  </div>
+</section>
+
+<article>
+  <h4> Top news </h4>
+  <div>
+    <!-- Birthdays   -->
+    <h5>Upcoming birthdays</h5>
+    <ul>
+      {% for user in birthdays %}
+      <li>
+	<div>
+	  {{ macro.img(url_for('static', filename='img/blog/cake.svg')) }}
+	</div>
+	<div>
+	  <div>
+	    {{ user.first_name }} {{user.second_name }}
+	  </div>
+	  <div>
+	    {{ user.birthday.strftime('%b %d') }}
+	    <span>({{ today.year - user.birthday.year}})</span>
+	  </div>
+	</div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div>
+    <!-- Quote of the day -->
+    <h5>Cat facts</h5>
+    <div>
+      {% if response %}
+      <p>
+	{{ response.fact }}
+      </p>
+      {% endif %}
+    </div>
+  </div>
+</article>
+{% endblock %}

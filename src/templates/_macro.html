@@ -1,0 +1,52 @@
+{% macro input() -%}
+<input
+  {% for k in kwargs.keys() -%}
+  {{ k }}="{{ kwargs[k] }}" 
+  {%- endfor %}>
+{%- endmacro %}
+
+{% macro img(src) -%}
+<img src="{{ src }}"
+     {% for k in kwargs.keys() -%}
+     {{ k }}="{{ kwargs[k] }}" 
+     {%- endfor %}>
+{%- endmacro %}
+
+{% macro label_input(label, input='text') -%}
+<div class="field">
+  <label for='{{ input }}'>{{ label }}</label>
+  {% if kwargs['type'] == 'textarea' %}
+  <textarea  name="{{ input }}">
+    {% if kwargs['value'] -%}
+    {{ kwargs['value'] }}
+    {%- endif %}
+  </textarea>
+  {% else %}
+  <input name="{{ input }}" 
+	 {% for k in kwargs.keys() -%}
+	 {{ k }}="{{ kwargs[k] }}" 
+	 {%- endfor %}>
+  {% endif %}
+</div>
+{%- endmacro %}
+
+
+{% macro link(name, href) -%}
+<a href="{{ href }}"
+   {% for k in kwargs.keys() -%}
+   {{ k }}="{{ kwargs[k] }}" 
+   {%- endfor %}>
+  {{ name }}
+</a>
+{%- endmacro %}
+
+{% macro img_link(url_link, src, alt='') -%}
+<div class="img-link">
+  <a href="{{ url_link }}">
+    <img src="{{ src }}" alt="{{ alt }}"
+	 {% for k in kwargs.keys() -%}
+	 {{ k }}="{{ kwargs[k] }}" 
+	 {%- endfor %}>
+  </a>
+</div>
+{%- endmacro %}

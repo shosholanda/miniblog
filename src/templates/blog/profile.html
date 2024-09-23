@@ -1,0 +1,21 @@
+{% extends 'blog/home.html' %}
+
+{% block title %}
+<title>Perfil</title>
+{% endblock %}
+
+{% block content %}
+<h2> Profile </h2>
+
+<form method='POST'>
+  {{ macro.label_input('Username', 'username', placeholder=user[0], disabled='') }}
+  {{ macro.label_input('First Name:', 'first_name', value=user[1]) }}
+  {{ macro.label_input('Second Name:', 'second_name', value=user[2]) }}
+  {{ macro.label_input('Birthday:', 'birthday', type='date', value=user[4] ) }}
+  {{ macro.label_input('Old password', 'old_password', type='password') }}
+  {{ macro.label_input('New password', 'new_password', type='password') }}
+  {{ macro.label_input(value='Update', type='submit') }}
+</form>
+
+{% endblock %}
+

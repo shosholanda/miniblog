@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>
+  Sign up
+</title>
+{% endblock %}
+
+{% block content %}
+<h2>Register form</h2>
+
+<form method="POST">
+  {{ macro.label_input('Username:', 'username') }}
+  {{ macro.label_input('Password:', 'password', type='password') }}
+  {{ macro.label_input('First Name:', 'first_name') }}
+  {{ macro.label_input('Second Name:', 'second_name') }}
+  {{ macro.label_input('Birthday:', 'birthday', type='date') }}
+  {{ macro.label_input(value='Register', type='submit') }}
+</form>
+{% endblock %}
+
+

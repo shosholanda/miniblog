@@ -1,0 +1,22 @@
+{% extends 'blog/home.html' %}
+
+{% block title %}
+<title>Update post</title>
+{% endblock %}
+
+
+{% block content %}
+<div>
+  <h3> Update post </h3>
+</div>
+
+<form method="POST">
+  {{ macro.label_input('Title:', 'title', value=post.title) }}
+  {{ macro.label_input('Description:', 'text', type='textarea', value=post.text) }}
+  {{ macro.label_input('Image:', 'img', type='file', value=post.img) }}
+  {{ macro.label_input('Public:', 'access', type='checkbox') }}
+  {{ macro.input(value='Update post', type='submit') }}
+</form>
+{% endblock %}
+
+

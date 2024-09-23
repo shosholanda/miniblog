@@ -1,0 +1,27 @@
+{% extends 'blog/home.html' %}
+
+{% block title %}
+<title>Create post</title>
+{% endblock %}
+
+{% block script %}
+<script
+  type="text/javascript"
+  src="{{ url_for('static', filename='js/script.js') }}">
+</script>
+{% endblock %}
+
+
+{% block content %}
+<div>
+  <h2> Create new post </h2>
+</div>
+
+<form enctype="multipart/form-data" method="POST">
+  {{ macro.label_input('Title:', 'title', required='') }}
+  {{ macro.label_input('Description:', 'text', type='textarea', required='') }}
+  {{ macro.label_input('Image:', 'img', type='file', id='file') }}
+  {{ macro.label_input('Public:', 'access', type='checkbox', checked='') }}
+  {{ macro.label_input('', 'submit', value='Create post', type='submit') }}
+</form>
+{% endblock %}
