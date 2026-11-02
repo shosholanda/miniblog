@@ -72,7 +72,27 @@ def create():
 def update(id_post):
     '''Updates a post by this user'''
     post = get_post_by_id(id_post)
-    return render_template('blog/update.html', post = post)
+    if request.method == 'GET':
+        return render_template('blog/update.html', post = post, path=url_for('static', filename=""))
+    if request.method == 'POST':
+        title = request.form.get('title')
+        text = request.form.get('text').strip()
+        img = request.files['img'] if request.files else None
+        access = 'access' in request.form
+
+        post.title = title
+        post.text = text
+        post.access = access
+
+        if img:
+            filename = secure_filename(img.filename)
+            abs_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            img.save(abs_path)
+            post.img = abs_path[5+8:] #LMAO
+
+        add(post)
+        return redirect(url_for('home.main'))
+    
 
 @profile.route('/delete/<int:id_post>', methods=['GET', 'POST'])
 @requires_login
