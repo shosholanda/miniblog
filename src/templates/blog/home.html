@@ -23,16 +23,16 @@
 
 {% block content -%}
 <aside>
-  <h4>Actions</h4>
+  <h4>Acciones</h4>
   <ul class='link'>
     <li>
-      {{ macro.link('Create new post', url_for('profile.create'))  }}
+      {{ macro.link('Crear un nuevo post', url_for('profile.create'))  }}
     </li>
     <li>
-      {{ macro.link('View my public posts', url_for('home.my_posts', user = g.user, access='public')) }}
+      {{ macro.link('Ver mis posts públicos', url_for('home.my_posts', user = g.user, access='public')) }}
     </li>
     <li>
-      {{ macro.link('View my private posts', url_for('home.my_posts', user = g.user, access='private')) }}
+      {{ macro.link('Ver mis posts privados', url_for('home.my_posts', user = g.user, access='private')) }}
     </li>
   </ul>
 </aside>
@@ -69,7 +69,7 @@
       <div>
 	{{ macro.img_link(url_for('home.main'), url_for('static', filename='img/blog/share.svg'), 'share') }}
       </div>
-      <div>Posted {{ post.date }} by {{ post.author }} </div>
+      <div>Publicado {{ post.date }} por {{ post.author }} </div>
     </div>
 
   </div>
@@ -77,10 +77,10 @@
 </section>
 
 <article>
-  <h4> Top news </h4>
+  <h4> Noticias </h4>
   <div>
     <!-- Birthdays   -->
-    <h5>Upcoming birthdays</h5>
+    <h5>Próximos cumpleaños</h5>
     <ul>
       {% for user in birthdays %}
       <li>

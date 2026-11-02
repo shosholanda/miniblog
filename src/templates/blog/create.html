@@ -1,7 +1,7 @@
 {% extends 'blog/home.html' %}
 
 {% block title %}
-<title>Create post</title>
+<title>Crear nuevo post</title>
 {% endblock %}
 
 {% block script %}
@@ -14,14 +14,14 @@
 
 {% block content %}
 <div>
-  <h2> Create new post </h2>
+  <h2> Crear nuevo post </h2>
 </div>
 
 <form enctype="multipart/form-data" method="POST">
-  {{ macro.label_input('Title:', 'title', required='') }}
-  {{ macro.label_input('Description:', 'text', type='textarea', required='') }}
-  {{ macro.label_input('Image:', 'img', type='file', id='file') }}
-  {{ macro.label_input('Public:', 'access', type='checkbox', checked='') }}
+  {{ macro.label_input('Título del post:', 'title', required='') }}
+  {{ macro.label_input('Descripción:', 'text', type='textarea', required='') }}
+  {{ macro.label_input('Imagen (opcional):', 'img', type='file', id='file') }}
+  {{ macro.label_input('Visibilidad pública:', 'access', type='checkbox', checked='') }}
   {{ macro.label_input('', 'submit', value='Create post', type='submit') }}
 </form>
 {% endblock %}

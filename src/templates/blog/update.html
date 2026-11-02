@@ -1,18 +1,18 @@
 {% extends 'blog/home.html' %}
 
 {% block title %}
-<title>Update post</title>
+<title>Editar post</title>
 {% endblock %}
 
 
 {% block content %}
 <div>
-  <h3> Update post </h3>
+  <h3> Editar post </h3>
 </div>
 
 <form method="POST">
-  {{ macro.label_input('Title:', 'title', value=post.title) }}
-  {{ macro.label_input('Description:', 'text', type='textarea', value=post.text) }}
+  {{ macro.label_input('Título:', 'title', value=post.title) }}
+  {{ macro.label_input('Descripción:', 'text', type='textarea', value=post.text) }}
   <div class="field">
     {% if post.img %}
     <img id="file" src={{ path + post.img }} >
@@ -24,7 +24,7 @@
     <label for='access'>Público</label>
     <input name="access" type='checkbox' {{ "checked" if post.access else ""}}>
   </div>
-  {{ macro.input(value='Update post', type='submit') }}
+  {{ macro.input(value='Guardar cambios', type='submit') }}
 </form>
 {% endblock %}
 

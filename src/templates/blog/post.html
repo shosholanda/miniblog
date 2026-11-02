@@ -2,22 +2,22 @@
 
 {% block content %}
 <aside>
-  <h3>Actions</h3>
+  <h3>Acciones</h3>
   <ul class='link'>
     <li>
-      {{ macro.link('Create new post', url_for('profile.create'))  }}
+      {{ macro.link('Crear nuevo post', url_for('profile.create'))  }}
     </li>
     <li>
-      {{ macro.link('Update this post', url_for('profile.update', id_post = id_post)) }}
+      {{ macro.link('Editar este post', url_for('profile.update', id_post = id_post)) }}
     </li>
     <li>
-      {{ macro.link('Delete this post', url_for('profile.delete', id_post = id_post)) }}
+      {{ macro.link('Borrar este post', url_for('profile.delete', id_post = id_post)) }}
     </li>
     <li>
-      {{ macro.link('View my public posts', url_for('home.my_posts', user = g.user, access='public')) }}
+      {{ macro.link('Ver mis posts públicos', url_for('home.my_posts', user = g.user, access='public')) }}
     </li>
     <li>
-      {{ macro.link('View my private posts', url_for('home.my_posts', user = g.user, access='private')) }}
+      {{ macro.link('Ver mis posts privados', url_for('home.my_posts', user = g.user, access='private')) }}
     </li>
   </ul>
 </aside>
@@ -48,7 +48,7 @@
       <div>
 	{{ macro.img(url_for('static', filename='img/blog/share.svg'), alt='Share') }}
       </div>
-      <div>Posted {{ post.date }} by {{ post.author }} </div>
+      <div>Publicado el {{ post.date }} por {{ post.author }} </div>
     </div>
 
   </div>
